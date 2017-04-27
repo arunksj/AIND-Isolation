@@ -202,6 +202,8 @@ class MinimaxPlayer(IsolationPlayer):
 
         return max([self.min_value(game.forecast_move(m), depth - 1) for m in legal_moves])
 
+
+
     def minimax(self, game, depth):
         """Implement depth-limited minimax search algorithm as described in
         the lectures.
@@ -301,6 +303,62 @@ class AlphaBetaPlayer(IsolationPlayer):
         # TODO: finish this function!
         raise NotImplementedError
 
+    def time_check(self):
+        if self.time_left() < self.TIMER_THRESHOLD:
+            raise SearchTimeout()
+
+        return
+
+    def min_value(self, game, depth, alpha, beta):
+        self.time_check()
+
+        legal_moves = game.get_legal_moves()
+
+        if not legal_moves:
+            return float("-inf")
+
+        if depth == 1:
+            return min(beta, min([self.score(game.forecast_move(m), self) for m in legal_moves]))
+
+        current_min = float("+inf")
+
+        for current_move in legal_moves:
+            min_from_child = self.max_value(game.forecast_move(current_move), depth-1, alpha, beta)
+
+            current_min = min(current_min, min_from_child)
+
+            if current_min <= alpha:
+                return current_min
+
+            beta = min(beta, current_min)
+
+        return current_min
+
+    def max_value(self, game, depth, alpha, beta):
+        self.time_check()
+
+        legal_moves = game.get_legal_moves()
+
+        if not legal_moves:
+            return float("-inf")
+
+        if depth == 1:
+            return max(alpha, max([self.score(game.forecast_move(m), self) for m in legal_moves]))
+
+        current_max = float("-inf")
+
+        for current_move in legal_moves:
+            max_from_child = self.min_value(game.forecast_move(current_move), depth-1, alpha, beta)
+
+            current_max = max(current_max, max_from_child)
+
+            if current_max >= beta:
+                return current_max
+
+            alpha = max(alpha, current_max)
+
+        return current_max
+
     def alphabeta(self, game, depth, alpha=float("-inf"), beta=float("inf")):
         """Implement depth-limited minimax search with alpha-beta pruning as
         described in the lectures.
@@ -346,8 +404,24 @@ class AlphaBetaPlayer(IsolationPlayer):
                 each helper function or else your agent will timeout during
                 testing.
         """
-        if self.time_left() < self.TIMER_THRESHOLD:
-            raise SearchTimeout()
 
-        # TODO: finish this function!
-        raise NotImplementedError
+        self.time_check()
+
+        legal_moves = game.get_legal_moves()
+
+        current_max = float("-inf")
+        maximizing_move = (-1, -1)
+
+        for legal_move in legal_moves:
+            max_from_child = self.min_value(game.forecast_move(legal_move), depth-1, alpha, beta)
+
+            if max_from_child > current_max:
+                current_max = max_from_child
+                maximizing_move = legal_moves
+
+            if current_max >= beta:
+                return maximizing_move
+
+            alpha = max(current_max, alpha)
+
+        return maximizing_move
