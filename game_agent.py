@@ -35,8 +35,16 @@ def custom_score(game, player):
         The heuristic value of the current game state to the specified player.
     """
     # TODO: finish this function!
-    raise NotImplementedError
 
+    if game.is_loser(player):
+        return float("-inf")
+
+    if game.is_winner(player):
+        return float("inf")
+
+    own_moves = len(game.get_legal_moves(player))
+    opp_moves = len(game.get_legal_moves(game.get_opponent(player)))
+    return float(own_moves)
 
 def custom_score_2(game, player):
     """Calculate the heuristic value of a game state from the point of view
@@ -202,8 +210,6 @@ class MinimaxPlayer(IsolationPlayer):
 
         return max([self.min_value(game.forecast_move(m), depth - 1) for m in legal_moves])
 
-
-
     def minimax(self, game, depth):
         """Implement depth-limited minimax search algorithm as described in
         the lectures.
@@ -298,10 +304,24 @@ class AlphaBetaPlayer(IsolationPlayer):
             Board coordinates corresponding to a legal move; may return
             (-1, -1) if there are no available legal moves.
         """
+        best_move = (-1, -1)
+
         self.time_left = time_left
 
-        # TODO: finish this function!
-        raise NotImplementedError
+        print("Exploration Depth", self.search_depth)
+
+        try:
+            # The try/except block will automatically catch the exception
+            # raised when the timer is about to expire.
+            return self.alphabeta(game, self.search_depth, float("-inf"), float("inf"))
+
+        except SearchTimeout:
+            print("Timeout!!")
+            pass  # Handle any actions required after timeout as needed
+
+        # Return the best move from the last completed search iteration
+
+        return best_move
 
     def time_check(self):
         if self.time_left() < self.TIMER_THRESHOLD:
@@ -309,7 +329,7 @@ class AlphaBetaPlayer(IsolationPlayer):
 
         return
 
-    def min_value(self, game, depth, alpha, beta):
+    def ab_min_value(self, game, depth, alpha, beta):
         self.time_check()
 
         legal_moves = game.get_legal_moves()
@@ -323,7 +343,7 @@ class AlphaBetaPlayer(IsolationPlayer):
         current_min = float("+inf")
 
         for current_move in legal_moves:
-            min_from_child = self.max_value(game.forecast_move(current_move), depth-1, alpha, beta)
+            min_from_child = self.ab_max_value(game.forecast_move(current_move), depth-1, alpha, beta)
 
             current_min = min(current_min, min_from_child)
 
@@ -334,7 +354,7 @@ class AlphaBetaPlayer(IsolationPlayer):
 
         return current_min
 
-    def max_value(self, game, depth, alpha, beta):
+    def ab_max_value(self, game, depth, alpha, beta):
         self.time_check()
 
         legal_moves = game.get_legal_moves()
@@ -348,7 +368,7 @@ class AlphaBetaPlayer(IsolationPlayer):
         current_max = float("-inf")
 
         for current_move in legal_moves:
-            max_from_child = self.min_value(game.forecast_move(current_move), depth-1, alpha, beta)
+            max_from_child = self.ab_min_value(game.forecast_move(current_move), depth-1, alpha, beta)
 
             current_max = max(current_max, max_from_child)
 
@@ -413,15 +433,23 @@ class AlphaBetaPlayer(IsolationPlayer):
         maximizing_move = (-1, -1)
 
         for legal_move in legal_moves:
-            max_from_child = self.min_value(game.forecast_move(legal_move), depth-1, alpha, beta)
+            # print("Begin Min from Main")
+            max_from_child = self.ab_min_value(game.forecast_move(legal_move), depth-1, alpha, beta)
+            # print("End Min from Main")
 
             if max_from_child > current_max:
                 current_max = max_from_child
-                maximizing_move = legal_moves
+                maximizing_move = legal_move
 
             if current_max >= beta:
+                print("MaximizingMove Under Beta: ", maximizing_move)
+                print("Current Max", current_max)
+                print("Beta", beta)
+                print("Legal Moves", game.get_legal_moves())
                 return maximizing_move
 
             alpha = max(current_max, alpha)
 
+        print("MaximizingMove: ", maximizing_move)
+        print("Current Exit Max", current_max)
         return maximizing_move
