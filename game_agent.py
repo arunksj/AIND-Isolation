@@ -69,7 +69,15 @@ def custom_score_2(game, player):
         The heuristic value of the current game state to the specified player.
     """
     # TODO: finish this function!
-    raise NotImplementedError
+    if game.is_loser(player):
+        return float("-inf")
+
+    if game.is_winner(player):
+        return float("inf")
+
+    own_moves = len(game.get_legal_moves(player))
+    opp_moves = len(game.get_legal_moves(game.get_opponent(player)))
+    return float(own_moves)
 
 
 def custom_score_3(game, player):
@@ -95,7 +103,15 @@ def custom_score_3(game, player):
         The heuristic value of the current game state to the specified player.
     """
     # TODO: finish this function!
-    raise NotImplementedError
+    if game.is_loser(player):
+        return float("-inf")
+
+    if game.is_winner(player):
+        return float("inf")
+
+    own_moves = len(game.get_legal_moves(player))
+    opp_moves = len(game.get_legal_moves(game.get_opponent(player)))
+    return float(own_moves)
 
 
 class IsolationPlayer:
@@ -329,15 +345,26 @@ class AlphaBetaPlayer(IsolationPlayer):
     def ab_min_value(self, game, depth, alpha, beta):
         self.time_check()
 
+        if alpha >= beta:
+            return alpha
+
         legal_moves = game.get_legal_moves()
 
         if not legal_moves:
-            return float("-inf")
-
-        if depth <= 1:
-            return min(beta, min([self.score(game.forecast_move(m), self) for m in legal_moves]))
+            return float("inf")
 
         current_min = float("+inf")
+
+        if depth <= 1:
+            for current_move in legal_moves:
+                min_from_child = self.score(game.forecast_move(current_move), self)
+
+                if min_from_child <= alpha:
+                    return min_from_child
+
+                current_min = min(current_min, min_from_child)
+
+            return current_min
 
         for current_move in legal_moves:
             min_from_child = self.ab_max_value(game.forecast_move(current_move), depth-1, alpha, beta)
@@ -354,15 +381,26 @@ class AlphaBetaPlayer(IsolationPlayer):
     def ab_max_value(self, game, depth, alpha, beta):
         self.time_check()
 
+        if alpha >= beta:
+            return beta
+
         legal_moves = game.get_legal_moves()
 
         if not legal_moves:
             return float("-inf")
 
-        if depth <= 1:
-            return max(alpha, max([self.score(game.forecast_move(m), self) for m in legal_moves]))
-
         current_max = float("-inf")
+
+        if depth <= 1:
+            for current_move in legal_moves:
+                max_from_child = self.score(game.forecast_move(current_move), self)
+
+                if max_from_child >= beta:
+                    return max_from_child
+
+                current_max = max(current_max, max_from_child)
+
+            return current_max
 
         for current_move in legal_moves:
             max_from_child = self.ab_min_value(game.forecast_move(current_move), depth-1, alpha, beta)
@@ -428,6 +466,22 @@ class AlphaBetaPlayer(IsolationPlayer):
 
         current_max = float("-inf")
         maximizing_move = (-1, -1)
+
+        if alpha >= beta:
+            return -1, -1
+
+        if depth == 1:
+            for current_move in legal_moves:
+                max_from_child = self.score(game.forecast_move(current_move), self)
+
+                if max_from_child > current_max:
+                    current_max = max_from_child
+                    maximizing_move = current_move
+
+                if current_max >= beta:
+                    return maximizing_move
+
+            return maximizing_move
 
         for legal_move in legal_moves:
             max_from_child = self.ab_min_value(game.forecast_move(legal_move), depth-1, alpha, beta)
