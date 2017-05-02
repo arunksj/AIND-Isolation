@@ -8,6 +8,8 @@ own agent and example heuristic functions.
 
 from random import randint
 
+from game_agent import AlphaBetaPlayer, MinimaxPlayer
+
 
 def null_score(game, player):
     """This heuristic presumes no knowledge for non-terminal states, and
@@ -255,35 +257,31 @@ class HumanPlayer():
 if __name__ == "__main__":
     from isolation import Board
 
-    # create an isolation board (by default 7x7)
-    player1 = RandomPlayer()
-    player2 = GreedyPlayer()
-    game = Board(player1, player2)
+    greedy_win_count = 0
+    ab_win_count = 0
 
-    # place player 1 on the board at row 2, column 3, then place player 2 on
-    # the board at row 0, column 5; display the resulting board state.  Note
-    # that the .apply_move() method changes the calling object in-place.
-    game.apply_move((2, 3))
-    game.apply_move((0, 5))
-    print(game.to_string())
+    for x in range(0, 50):
+        # create an isolation board (by default 7x7)
+        print("Begin Game Iteration: ", x)
+        ab_player = AlphaBetaPlayer()
+        greedy_player = GreedyPlayer()
 
-    # players take turns moving on the board, so player1 should be next to move
-    assert(player1 == game.active_player)
+        game = Board(ab_player, greedy_player)
 
-    # get a list of the legal moves available to the active player
-    print(game.get_legal_moves())
+        # play the remainder of the game automatically -- outcome can be "illegal
+        # move", "timeout", or "forfeit"
+        winner, history, outcome = game.play(time_limit=0.5 * 1000)
 
-    # get a successor of the current state by making a copy of the board and
-    # applying a move. Notice that this does NOT change the calling object
-    # (unlike .apply_move()).
-    new_game = game.forecast_move((1, 1))
-    assert(new_game.to_string() != game.to_string())
-    print("\nOld state:\n{}".format(game.to_string()))
-    print("\nNew state:\n{}".format(new_game.to_string()))
+        print(history)
 
-    # play the remainder of the game automatically -- outcome can be "illegal
-    # move", "timeout", or "forfeit"
-    winner, history, outcome = game.play()
-    print("\nWinner: {}\nOutcome: {}".format(winner, outcome))
-    print(game.to_string())
-    print("Move history:\n{!s}".format(history))
+        if winner == greedy_player:
+            greedy_win_count += 1
+            print("AB player lost due to: ", outcome)
+        else:
+            ab_win_count += 1
+            print("Greedy player lost due to: ", outcome)
+
+        print("End Game Iteration: ", x)
+
+    print("Greedy Win Count: ", greedy_win_count)
+    print("AB Win Count: ", ab_win_count)

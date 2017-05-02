@@ -1,0 +1,8 @@
+1) Mobility: Different weights.
+2) Opening book
+3) Center score.
+4) Distance from the edge?
+5) Score is lower for a move that takes you to the edge of a board compared to the one that remains near the center.
+
+
+Create a population of of mobility with various moves and select the one with good score.

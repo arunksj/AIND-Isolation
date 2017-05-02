@@ -1,0 +1,332 @@
+/Library/Frameworks/Python.framework/Versions/3.6/bin/python3.6 /Users/arunkumar.jadhav/Work/aind/AIND-Isolation/sample_players.py
+Begin Game Iteration:  0
+Depth at timeout! 6
+Best move at timeout! (2, 0)
+Depth at timeout! 10
+Best move at timeout! (3, 2)
+Depth at timeout! 9
+Best move at timeout! (1, 1)
+Depth at timeout! 11
+Best move at timeout! (0, 3)
+Depth at timeout! 11
+Best move at timeout! (2, 2)
+Depth at timeout! 12
+Best move at timeout! (0, 1)
+Depth at timeout! 14
+Best move at timeout! (1, 3)
+Depth at timeout! 14
+Best move at timeout! (0, 5)
+Depth at timeout! 22
+Best move at timeout! (2, 4)
+Best move at depth! 23
+Found Best Move!! (1, 2)
+Best move at depth! 23
+Found Best Move!! (0, 0)
+Best move at depth! 23
+Found Best Move!! (2, 1)
+Best move at depth! 23
+Found Best Move!! (0, 2)
+Best move at depth! 23
+Found Best Move!! (1, 4)
+Best move at depth! 23
+Found Best Move!! (0, 6)
+End Game Iteration:  0
+Begin Game Iteration:  1
+Depth at timeout! 6
+Best move at timeout! (2, 0)
+Depth at timeout! 9
+Best move at timeout! (4, 1)
+Depth at timeout! 9
+Best move at timeout! (3, 3)
+Depth at timeout! 10
+Best move at timeout! (1, 2)
+Depth at timeout! 11
+Best move at timeout! (3, 1)
+Depth at timeout! 13
+Best move at timeout! (4, 3)
+Depth at timeout! 14
+Best move at timeout! (2, 4)
+Best move at depth! 23
+Found Best Move!! (4, 5)
+Best move at depth! 23
+Found Best Move!! (5, 3)
+Best move at depth! 23
+Found Best Move!! (3, 2)
+Best move at depth! 23
+Found Best Move!! (1, 1)
+Best move at depth! 23
+Found Best Move!! (0, 3)
+Best move at depth! 23
+Found Best Move!! (1, 5)
+Best move at depth! 23
+Found Best Move!! (3, 6)
+Best move at depth! 23
+Found Best Move!! (5, 5)
+Best move at depth! 23
+Found Best Move!! (6, 3)
+Best move at depth! 23
+Found Best Move!! (5, 1)
+End Game Iteration:  1
+Begin Game Iteration:  2
+Depth at timeout! 6
+Best move at timeout! (2, 0)
+Depth at timeout! 9
+Best move at timeout! (1, 2)
+Depth at timeout! 10
+Best move at timeout! (2, 4)
+Depth at timeout! 10
+Best move at timeout! (0, 3)
+Depth at timeout! 11
+Best move at timeout! (2, 2)
+Depth at timeout! 12
+Best move at timeout! (1, 0)
+Depth at timeout! 14
+Best move at timeout! (3, 1)
+Depth at timeout! 17
+Best move at timeout! (4, 3)
+Best move at depth! 23
+Found Best Move!! (6, 4)
+Best move at depth! 23
+Found Best Move!! (5, 2)
+Best move at depth! 23
+Found Best Move!! (4, 0)
+Best move at depth! 23
+Found Best Move!! (2, 1)
+Best move at depth! 23
+Found Best Move!! (1, 3)
+End Game Iteration:  2
+Begin Game Iteration:  3
+Depth at timeout! 6
+Best move at timeout! (2, 0)
+Depth at timeout! 9
+Best move at timeout! (4, 1)
+Depth at timeout! 9
+Best move at timeout! (3, 3)
+Depth at timeout! 10
+Best move at timeout! (5, 2)
+Depth at timeout! 11
+Best move at timeout! (6, 4)
+Depth at timeout! 13
+Best move at timeout! (4, 5)
+Depth at timeout! 15
+Best move at timeout! (2, 6)
+Depth at timeout! 19
+Best move at timeout! (1, 4)
+Best move at depth! 23
+Found Best Move!! (0, 6)
+Best move at depth! 23
+Found Best Move!! (2, 5)
+Best move at depth! 23
+Found Best Move!! (0, 4)
+Best move at depth! 23
+Found Best Move!! (1, 6)
+Best move at depth! 23
+Found Best Move!! (3, 5)
+Best move at depth! 23
+Found Best Move!! (5, 4)
+Best move at depth! 23
+Found Best Move!! (4, 6)
+End Game Iteration:  3
+Begin Game Iteration:  4
+Depth at timeout! 6
+Best move at timeout! (2, 0)
+Depth at timeout! 9
+Best move at timeout! (4, 1)
+Depth at timeout! 9
+Best move at timeout! (3, 3)
+Depth at timeout! 10
+Best move at timeout! (5, 4)
+Depth at timeout! 11
+Best move at timeout! (6, 6)
+Depth at timeout! 13
+Best move at timeout! (4, 5)
+Depth at timeout! 14
+Best move at timeout! (5, 3)
+Best move at depth! 23
+Found Best Move!! (3, 2)
+Best move at depth! 23
+Found Best Move!! (4, 0)
+Best move at depth! 23
+Found Best Move!! (2, 1)
+Best move at depth! 23
+Found Best Move!! (1, 3)
+Best move at depth! 23
+Found Best Move!! (2, 5)
+Best move at depth! 23
+Found Best Move!! (0, 6)
+Best move at depth! 23
+Found Best Move!! (1, 4)
+Best move at depth! 23
+Found Best Move!! (2, 6)
+Best move at depth! 23
+Found Best Move!! (0, 5)
+End Game Iteration:  4
+Begin Game Iteration:  5
+Depth at timeout! 6
+Best move at timeout! (2, 0)
+Depth at timeout! 9
+Best move at timeout! (3, 2)
+Depth at timeout! 10
+Best move at timeout! (2, 4)
+Depth at timeout! 10
+Best move at timeout! (1, 2)
+Depth at timeout! 11
+Best move at timeout! (3, 1)
+Depth at timeout! 13
+Best move at timeout! (5, 2)
+Depth at timeout! 15
+Best move at timeout! (3, 3)
+Best move at depth! 23
+Found Best Move!! (2, 1)
+Best move at depth! 23
+Found Best Move!! (0, 2)
+Best move at depth! 23
+Found Best Move!! (1, 4)
+Best move at depth! 23
+Found Best Move!! (2, 6)
+Best move at depth! 23
+Found Best Move!! (0, 5)
+Best move at depth! 23
+Found Best Move!! (1, 3)
+Best move at depth! 23
+Found Best Move!! (2, 5)
+Best move at depth! 23
+Found Best Move!! (0, 6)
+End Game Iteration:  5
+Begin Game Iteration:  6
+Depth at timeout! 6
+Best move at timeout! (2, 0)
+Depth at timeout! 10
+Best move at timeout! (3, 2)
+Depth at timeout! 9
+Best move at timeout! (4, 0)
+Depth at timeout! 10
+Best move at timeout! (6, 1)
+Depth at timeout! 12
+Best move at timeout! (5, 3)
+Depth at timeout! 11
+Best move at timeout! (4, 1)
+Depth at timeout! 13
+Best move at timeout! (6, 0)
+Depth at timeout! 15
+Best move at timeout! (5, 2)
+Best move at depth! 23
+Found Best Move!! (3, 3)
+Best move at depth! 23
+Found Best Move!! (2, 1)
+Best move at depth! 23
+Found Best Move!! (1, 3)
+Best move at depth! 23
+Found Best Move!! (2, 5)
+Best move at depth! 23
+Found Best Move!! (0, 4)
+Best move at depth! 23
+Found Best Move!! (1, 2)
+Best move at depth! 23
+Found Best Move!! (3, 1)
+End Game Iteration:  6
+Begin Game Iteration:  7
+Depth at timeout! 6
+Best move at timeout! (2, 0)
+Depth at timeout! 9
+Best move at timeout! (1, 2)
+Depth at timeout! 10
+Best move at timeout! (0, 0)
+Depth at timeout! 11
+Best move at timeout! (2, 1)
+Depth at timeout! 10
+Best move at timeout! (4, 0)
+Depth at timeout! 12
+Best move at timeout! (5, 2)
+Depth at timeout! 13
+Best move at timeout! (3, 1)
+Depth at timeout! 16
+Best move at timeout! (5, 0)
+Best move at depth! 23
+Found Best Move!! (6, 2)
+Best move at depth! 23
+Found Best Move!! (5, 4)
+Best move at depth! 23
+Found Best Move!! (3, 3)
+Best move at depth! 23
+Found Best Move!! (2, 5)
+Best move at depth! 23
+Found Best Move!! (0, 6)
+Best move at depth! 23
+Found Best Move!! (1, 4)
+End Game Iteration:  7
+Begin Game Iteration:  8
+Depth at timeout! 6
+Best move at timeout! (2, 0)
+Depth at timeout! 9
+Best move at timeout! (1, 2)
+Depth at timeout! 10
+Best move at timeout! (0, 0)
+Depth at timeout! 11
+Best move at timeout! (2, 1)
+Depth at timeout! 10
+Best move at timeout! (4, 0)
+Depth at timeout! 11
+Best move at timeout! (5, 2)
+Depth at timeout! 13
+Best move at timeout! (6, 4)
+Depth at timeout! 16
+Best move at timeout! (4, 5)
+Best move at depth! 23
+Found Best Move!! (6, 6)
+Best move at depth! 23
+Found Best Move!! (5, 4)
+Best move at depth! 23
+Found Best Move!! (3, 3)
+Best move at depth! 23
+Found Best Move!! (1, 4)
+Best move at depth! 23
+Found Best Move!! (0, 6)
+Best move at depth! 23
+Found Best Move!! (2, 5)
+Best move at depth! 23
+Found Best Move!! (0, 4)
+Best move at depth! 23
+Found Best Move!! (1, 6)
+End Game Iteration:  8
+Begin Game Iteration:  9
+Depth at timeout! 6
+Best move at timeout! (2, 0)
+Depth at timeout! 9
+Best move at timeout! (0, 1)
+Depth at timeout! 10
+Best move at timeout! (2, 2)
+Depth at timeout! 10
+Best move at timeout! (1, 0)
+Depth at timeout! 11
+Best move at timeout! (0, 2)
+Depth at timeout! 12
+Best move at timeout! (1, 4)
+Depth at timeout! 12
+Best move at timeout! (3, 5)
+Depth at timeout! 13
+Best move at timeout! (5, 6)
+Best move at depth! 23
+Found Best Move!! (6, 4)
+Best move at depth! 23
+Found Best Move!! (5, 2)
+Best move at depth! 23
+Found Best Move!! (4, 0)
+Best move at depth! 23
+Found Best Move!! (2, 1)
+Best move at depth! 23
+Found Best Move!! (1, 3)
+Best move at depth! 23
+Found Best Move!! (3, 2)
+Best move at depth! 23
+Found Best Move!! (1, 1)
+Best move at depth! 23
+Found Best Move!! (3, 0)
+Best move at depth! 23
+Found Best Move!! (5, 1)
+End Game Iteration:  9
+Greedy Win Count:  0
+AB Win Count:  10
+
+Process finished with exit code 0
+
