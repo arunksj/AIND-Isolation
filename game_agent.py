@@ -333,7 +333,7 @@ class AlphaBetaPlayer(IsolationPlayer):
         return best_move
 
     def time_check(self):
-        if (self.time_left() - 10) < self.TIMER_THRESHOLD:
+        if self.time_left() < self.TIMER_THRESHOLD:
             raise SearchTimeout()
 
         return
