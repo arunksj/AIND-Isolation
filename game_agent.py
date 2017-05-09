@@ -318,7 +318,16 @@ class AlphaBetaPlayer(IsolationPlayer):
             Board coordinates corresponding to a legal move; may return
             (-1, -1) if there are no available legal moves.
         """
+
+        legal_moves = game.get_legal_moves()
+
         best_move = (-1, -1)
+
+        if not legal_moves:
+            return best_move
+
+        best_move = legal_moves[0]
+
         self.time_left = time_left
 
         for depth in itertools.count(start=0, step=1):
@@ -463,8 +472,13 @@ class AlphaBetaPlayer(IsolationPlayer):
         current_max = float("-inf")
         maximizing_move = (-1, -1)
 
+        if not legal_moves:
+            return maximizing_move
+
         if alpha >= beta:
             return -1, -1
+
+        maximizing_move = legal_moves[0]
 
         if depth <= 1:
             for current_move in legal_moves:
