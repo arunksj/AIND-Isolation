@@ -1,0 +1,17 @@
+1) Mobility: Different weights.
+2) Opening book
+3) Center score.
+4) Distance from the edge?
+5) Score is lower for a move that takes you to the edge of a board compared to the one that remains near the center.
+6) Maximize number of exclusive moves?
+7) Change the strategy as the game progresses?
+8) Something that depends on a player's position?
+     - Maximize the distance between players?
+     - Minize the distance between two players?
+     - 
+
+TODO
+----
+1) Pick maximizing score as the default move as opposed to picking the first of possible moves.
+
+Create a population of mobility with various moves and select the one with good score.
