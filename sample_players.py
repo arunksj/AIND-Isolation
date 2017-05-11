@@ -8,7 +8,7 @@ own agent and example heuristic functions.
 
 from random import randint
 
-from game_agent import AlphaBetaPlayer, MinimaxPlayer
+from game_agent import AlphaBetaPlayer, MinimaxPlayer, custom_score, center_score
 
 
 def null_score(game, player):
@@ -257,16 +257,17 @@ class HumanPlayer():
 if __name__ == "__main__":
     from isolation import Board
 
-    greedy_win_count = 0
-    ab_win_count = 0
+    benchmark_win_count = 0
+    arun_win_count = 0
+
+    custom_score_player = AlphaBetaPlayer(score_fn=custom_score)
+    benchmark_score_player = AlphaBetaPlayer(score_fn=improved_score)
 
     for x in range(0, 50):
         # create an isolation board (by default 7x7)
         print("Begin Game Iteration: ", x)
-        ab_player = AlphaBetaPlayer()
-        greedy_player = GreedyPlayer()
 
-        game = Board(ab_player, greedy_player)
+        game = Board(custom_score_player, benchmark_score_player)
 
         # play the remainder of the game automatically -- outcome can be "illegal
         # move", "timeout", or "forfeit"
@@ -274,14 +275,14 @@ if __name__ == "__main__":
 
         print(history)
 
-        if winner == greedy_player:
-            greedy_win_count += 1
-            print("AB player lost due to: ", outcome)
+        if winner == benchmark_score_player:
+            benchmark_win_count += 1
+            print("Arun lost due to: ", outcome)
         else:
-            ab_win_count += 1
-            print("Greedy player lost due to: ", outcome)
+            arun_win_count += 1
+            print("Benchmark lost due to: ", outcome)
 
         print("End Game Iteration: ", x)
 
-    print("Greedy Win Count: ", greedy_win_count)
-    print("AB Win Count: ", ab_win_count)
+    print("Benchmark Win Count: ", benchmark_win_count)
+    print("Arun Win Count: ", arun_win_count)
