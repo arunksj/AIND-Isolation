@@ -79,8 +79,8 @@ def custom_score_2(game, player):
 
     own_moves = len(game.get_legal_moves(player))
     opp_moves = len(game.get_legal_moves(game.get_opponent(player)))
-    return float(own_moves)
 
+    return float(own_moves - opp_moves + center_score(game, player))
 
 def custom_score_3(game, player):
     """Calculate the heuristic value of a game state from the point of view
@@ -113,7 +113,7 @@ def custom_score_3(game, player):
 
     own_moves = len(game.get_legal_moves(player))
     opp_moves = len(game.get_legal_moves(game.get_opponent(player)))
-    return float(own_moves)
+    return float(own_moves - opp_moves - center_score(game, player))
 
 def center_score(game, player):
     """Outputs a score equal to square of the distance from the center of the
