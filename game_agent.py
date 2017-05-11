@@ -214,7 +214,13 @@ class MinimaxPlayer(IsolationPlayer):
 
         # Initialize the best move so that this function returns something
         # in case the search fails due to timeout
-        best_move = (-1, -1)
+
+        legal_moves = game.get_legal_moves()
+
+        if not legal_moves:
+            return -1, -1
+
+        _, best_move = max([(self.score(game.forecast_move(m), self), m) for m in legal_moves])
 
         try:
             # The try/except block will automatically catch the exception
@@ -222,7 +228,7 @@ class MinimaxPlayer(IsolationPlayer):
             return self.minimax(game, self.search_depth)
 
         except SearchTimeout:
-            pass  # Handle any actions required after timeout as needed
+            return best_move
 
         # Return the best move from the last completed search iteration
         return best_move
@@ -354,12 +360,10 @@ class AlphaBetaPlayer(IsolationPlayer):
 
         legal_moves = game.get_legal_moves()
 
-        best_move = (-1, -1)
-
         if not legal_moves:
-            return best_move
+            return -1, -1
 
-        best_move = legal_moves[0]
+        _, best_move = max([(self.score(game.forecast_move(m), self), m) for m in legal_moves])
 
         self.time_left = time_left
 
