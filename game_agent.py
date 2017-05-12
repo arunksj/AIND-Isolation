@@ -43,10 +43,10 @@ def custom_score(game, player):
         return float("inf")
 
     own_moves = len(game.get_legal_moves(player))
-
     opp_moves = len(game.get_legal_moves(game.get_opponent(player)))
+    center_result = center_score(game, player)
 
-    return float(own_moves - opp_moves * 2 - center_score(game, player))
+    return float(own_moves - opp_moves * 2 - center_result * center_result)
 
 def custom_score_2(game, player):
     """Calculate the heuristic value of a game state from the point of view
